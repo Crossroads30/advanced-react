@@ -1,19 +1,40 @@
+import React, { useState } from 'react'
 import { data } from '../../../data'
 
 const UseStateArray = () => {
+	// const [users, setUsers] = React.useState(data)
+	const [users, setUsers] = useState(data)
+
+	const removeUsers = () => {
+		setUsers([])
+	}
+	const removeUser = id => {
+		// const newUsers = users.filter(user => user.id !== id)
+		// setUsers(newUsers)
+		setUsers(users.filter(user => user.id !== id))
+	}
+
 	return (
 		<div>
 			<ul className='users'>
-				{data.map(item => {
+				{users.map(user => {
 					return (
-						<li className='user-container' key={item.id}>
-							<h5>{item.name}</h5>
-							<button className='btn'>remove user</button>
+						<li className='user-container' key={user.id}>
+							<h5>{user.name}</h5>
+							<button
+								onClick={() => removeUser(user.id)}
+								type='button'
+								className='btn'
+							>
+								remove user
+							</button>
 						</li>
 					)
 				})}
 			</ul>
-			<button className='btn'>Clear list</button>
+			<button type='button' onClick={removeUsers} className='btn'>
+				Clear list
+			</button>
 		</div>
 	)
 }
