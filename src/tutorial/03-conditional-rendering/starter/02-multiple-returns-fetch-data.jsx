@@ -10,7 +10,8 @@ const MultipleReturnsFetchData = () => {
 		const fetchUser = async () => {
 			try {
 				const response = await fetch(url)
-				if (!response.ok) { // case for 'fetch' to handle '400th' & '500th' errors! 
+				if (!response.ok) {
+					// case for 'fetch' to handle '400th' & '500th' errors!
 					setIsError(true)
 					setIsFetching(false)
 					return
@@ -35,19 +36,20 @@ const MultipleReturnsFetchData = () => {
 	if (isError) {
 		return <h3>There was an error!</h3>
 	}
+	const { avatar_url, name, company, bio } = user // destructuring must be after any condition, if it before, destructured obj will be undefined!
 	return (
 		<div>
 			<h2>My Solution of Fetch Data</h2>
 			<div>
 				<img
-					src={user.avatar_url}
+					src={avatar_url}
 					alt='user'
 					style={{ width: '150px', borderRadius: '30px' }}
 				/>
 			</div>
-			<h2>{user.name}</h2>
-			<h4>Works at {user.company}</h4>
-			<p>{user.bio}</p>
+			<h2>{name}</h2>
+			<h4>Works at {company}</h4>
+			<p>{bio}</p>
 		</div>
 	)
 }
