@@ -6,25 +6,46 @@ const MultipleReturnsFetchData = () => {
 	const [isFetching, setIsFetching] = useState(true)
 	const [isError, setIsError] = useState(false)
 
-	useEffect(() => {
-		const fetchUser = async () => {
-			try {
-				const response = await fetch(url)
-				if (!response.ok) {
-					// case for 'fetch' to handle '400th' & '500th' errors!
-					setIsError(true)
-					setIsFetching(false)
-					return
-				}
-				const user = await response.json()
-				// console.log(user)
-				setUser(user)
-			} catch (error) {
-				console.log(error)
+	// we can also use this func outside the useEffect, but we must invoke this inside useEffect!
+	const fetchUser = async () => {
+		try {
+			const response = await fetch(url)
+			if (!response.ok) {
+				// case for 'fetch' to handle '400th' & '500th' errors!
 				setIsError(true)
+				setIsFetching(false)
+				return
 			}
-			setIsFetching(false)
+			const user = await response.json()
+			// console.log(user)
+			setUser(user)
+		} catch (error) {
+			console.log(error)
+			setIsError(true)
 		}
+		setIsFetching(false)
+	}
+
+	useEffect(() => {
+	// const fetchUser = async () => {
+	// 	try {
+	// 		const response = await fetch(url)
+	// 		if (!response.ok) {
+	// 			// case for 'fetch' to handle '400th' & '500th' errors!
+	// 			setIsError(true)
+	// 			setIsFetching(false)
+	// 			return
+	// 		}
+	// 		const user = await response.json()
+	// 		// console.log(user)
+	// 		setUser(user)
+	// 	} catch (error) {
+	// 		console.log(error)
+	// 		setIsError(true)
+	// 	}
+	// 	setIsFetching(false)
+	// }
+
 		setTimeout(() => {
 			fetchUser()
 		}, 4000)
