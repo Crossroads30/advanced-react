@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 
 const CleanupFunction = () => {
-	const [value, setValue] = useState(true)
+	const [value, setValue] = useState(false)
 
+  console.log('render')
 	const handleClick = () => {
 		setValue(!value)
 	}
@@ -19,6 +20,12 @@ const CleanupFunction = () => {
 const SecondComponent = () => {
 	useEffect(() => {
 		console.log('hello!')
+    const interval = setInterval(() => {
+      console.log('interval')
+    }, 1000)
+    return () => {
+     clearInterval(interval) 
+    }
 	}, [])
 	return <h2>Second</h2>
 }
