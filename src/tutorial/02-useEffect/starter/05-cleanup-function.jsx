@@ -1,5 +1,26 @@
-const CleanupFunction = () => {
-  return <h2>cleanup function</h2>;
-};
+import { useEffect, useState } from 'react'
 
-export default CleanupFunction;
+const CleanupFunction = () => {
+	const [value, setValue] = useState(true)
+
+	const handleClick = () => {
+		setValue(!value)
+	}
+	return (
+		<div>
+			<button onClick={handleClick} className='btn'>
+				click me
+			</button>
+			{value && <SecondComponent />}
+		</div>
+	)
+}
+
+const SecondComponent = () => {
+	useEffect(() => {
+		console.log('hello!')
+	}, [])
+	return <h2>Second</h2>
+}
+
+export default CleanupFunction
