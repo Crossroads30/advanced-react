@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 const CleanupFunction = () => {
 	const [value, setValue] = useState(false)
 
-  console.log('render')
+	console.log('render')
 	const handleClick = () => {
 		setValue(!value)
 	}
@@ -19,13 +19,16 @@ const CleanupFunction = () => {
 
 const SecondComponent = () => {
 	useEffect(() => {
-		console.log('hello!')
-    const interval = setInterval(() => {
-      console.log('interval')
-    }, 1000)
-    return () => {
-     clearInterval(interval) 
-    }
+		// console.log('hello!')
+		// const interval = setInterval(() => {
+		//   console.log('interval')
+		// }, 1000)
+		const someFunc = () => {
+			//some logic
+		}
+		window.addEventListener('scroll', someFunc)
+		return () => window.addEventListener('scroll', someFunc)
+		// return () => clearInterval(interval)
 	}, [])
 	return <h2>Second</h2>
 }
