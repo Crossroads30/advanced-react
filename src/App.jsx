@@ -1,12 +1,10 @@
-// import Starter from './tutorial/04-project-structure/starter/Navbar'
+import List from './tutorial/05-leverage-javascript/starter/List'
 
-import Example from './tutorial/04-project-structure/starter/Example'
 
 function App() {
 	return (
 		<div className='container'>
-			{/* <Starter /> */}
-			<Example />
+			<List />
 		</div>
 	)
 }
