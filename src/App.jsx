@@ -1,13 +1,14 @@
-import Final from './tutorial/03-conditional-rendering/final/02-multiple-returns-fetch-data'
-import Starter from './tutorial/02-useEffect/starter/05-cleanup-function.jsx'
+// import Starter from './tutorial/04-project-structure/starter/Navbar'
+import { Home, About } from './tutorial/04-project-structure/starter/Pages'
 
 function App() {
-  return (
-    <div className='container'>
-      <Starter />
-      {/* <Final /> */}
-    </div>
-  );
+	return (
+		<div className='container'>
+			{/* <Starter /> */}
+			<Home />
+			<About />
+		</div>
+	)
 }
 
-export default App;
+export default App
