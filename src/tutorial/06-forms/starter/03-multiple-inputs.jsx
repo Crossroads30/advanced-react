@@ -1,35 +1,73 @@
-const MultipleInputs = () => {
-  return (
-    <div>
-      <form className='form'>
-        <h4>Multiple Inputs</h4>
-        {/* name */}
-        <div className='form-row'>
-          <label htmlFor='name' className='form-label'>
-            name
-          </label>
-          <input type='text' className='form-input' id='name' />
-        </div>
-        {/* email */}
-        <div className='form-row'>
-          <label htmlFor='email' className='form-label'>
-            Email
-          </label>
-          <input type='email' className='form-input' id='email' />
-        </div>
-        {/* email */}
-        <div className='form-row'>
-          <label htmlFor='password' className='form-label'>
-            Password
-          </label>
-          <input type='password' className='form-input' id='password' />
-        </div>
+import { useState } from 'react'
 
-        <button type='submit' className='btn btn-block'>
-          submit
-        </button>
-      </form>
-    </div>
-  );
-};
-export default MultipleInputs;
+const MultipleInputs = () => {
+	const [user, setUser] = useState({
+		name: '',
+		email: '',
+		password: '',
+	})
+
+	const handleChange = e => {
+		// console.log(e.target.name)
+		// console.log(e.target.value)
+		setUser({ ...user, [e.target.name]: e.target.value }) //dynamic object keys, we enter it with '[]'(it is not an array!!!), it refers to 'name' prop in every input below
+	}
+	const handleSubmit = e => {
+		e.preventDefault()
+		console.log(user)
+	}
+	return (
+		<div>
+			<form className='form' onSubmit={handleSubmit}>
+				<h4>Multiple Inputs</h4>
+				{/* name */}
+				<div className='form-row'>
+					<label htmlFor='name' className='form-label'>
+						name
+					</label>
+					<input
+						type='text'
+						className='form-input'
+						id='name'
+						value={user.name}
+						onChange={handleChange}
+						name='name'
+					/>
+				</div>
+				{/* email */}
+				<div className='form-row'>
+					<label htmlFor='email' className='form-label'>
+						Email
+					</label>
+					<input
+						type='email'
+						className='form-input'
+						id='email'
+						value={user.email}
+						onChange={handleChange}
+						name='email'
+					/>
+				</div>
+				{/* email */}
+				<div className='form-row'>
+					<label htmlFor='password' className='form-label'>
+						Password
+					</label>
+					<input
+						type='password'
+						className='form-input'
+						id='password'
+						value={user.password}
+						onChange={handleChange}
+						name='password'
+					/>
+				</div>
+
+				<button type='submit' className='btn btn-block'>
+					submit
+				</button>
+			</form>
+		</div>
+	)
+}
+export default MultipleInputs
