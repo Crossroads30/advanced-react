@@ -16,6 +16,12 @@ const UserChallenge = () => {
 		setUsers([...users, newUser])
 		setNameValue('')
 	}
+
+  const removeUser = (id) => {
+  const filteredUsers = users.filter(user => user.id !== id)
+  setUsers(filteredUsers)
+  }
+
 	// console.log(users)
 
 	return (
@@ -51,6 +57,7 @@ const UserChallenge = () => {
 								style={{ marginBottom: '1rem', justifyContent: 'center' }}
 							>
 								<h3>{name}</h3>
+                <button onClick={()=>removeUser(user.id)} className='btn' style={{marginLeft: '2rem'}}>remove user</button>
 							</li>
 						)
 					})}
