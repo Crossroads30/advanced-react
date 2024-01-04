@@ -295,14 +295,13 @@ ul {
   color: var(--primary-500);
   text-transform: capitalize;
 }
-
-.navbar {
+ .navbar {
   padding: 1rem;
   display: grid;
   grid-template-columns: auto 1fr;
   column-gap: 2rem;
   align-items: center;
-}
+} 
 .navbar h5 {
   font-weight: bold;
   margin-bottom: 0;
@@ -310,7 +309,7 @@ ul {
 .nav-container {
   display: flex;
   justify-content: space-between;
-  max-width: 400px;
+  width: 400px; 
 }
 .nav-links {
   display: flex;
