@@ -2,7 +2,7 @@ import React from 'react'
 import { data } from '../../../data'
 const ReducerBasics = () => {
 	const [people, setPeople] = React.useState(data)
-	const [isPeople, setIsPeople] = React.useState(true)
+	// const [isPeople, setIsPeople] = React.useState(true)
 
 	const removeItem = id => {
 		let newPeople = people.filter(person => person.id !== id)
@@ -14,7 +14,7 @@ const ReducerBasics = () => {
 	}
 
 	const clearPeople = () => {
-		setIsPeople(false)
+		// setIsPeople(false)
 		setPeople([])
 	}
 
@@ -29,7 +29,24 @@ const ReducerBasics = () => {
 					</div>
 				)
 			})}
-			{!isPeople && (
+			{people.length < 1 ? (
+				<button
+					className='btn'
+					style={{ marginTop: '2rem' }}
+					onClick={resetItem}
+				>
+					reset items
+				</button>
+			) : (
+				<button
+					className='btn'
+					style={{ marginTop: '2rem' }}
+					onClick={clearPeople}
+				>
+					clear items
+				</button>
+			)}
+			{/* {!isPeople && (
 				<button
 					className='btn'
 					style={{ marginTop: '2rem' }}
@@ -46,7 +63,7 @@ const ReducerBasics = () => {
 				>
 					clear items
 				</button>
-			)}
+			)} */}
 		</div>
 	)
 }
