@@ -1,5 +1,5 @@
 import Item from './Person'
-import { memo, useMemo } from 'react'
+import { memo } from 'react'// not the useMemo!!!
 
 const List = ({ people, removePerson, handleClick }) => {
 	return (
@@ -18,4 +18,4 @@ const List = ({ people, removePerson, handleClick }) => {
 		</div>
 	)
 }
-export default memo(List)
+export default memo(List)// not the useMemo!!!
