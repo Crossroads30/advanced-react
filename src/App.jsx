@@ -1,4 +1,4 @@
-import Starter from './tutorial/10-useReducer/starter/02-useReducer'
+import Starter from './tutorial/11-performance/starter/01-lower-state'
 
 
 function App() {
