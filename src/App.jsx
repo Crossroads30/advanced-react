@@ -1,4 +1,4 @@
-import Starter from './tutorial/11-performance/starter/03-hooks/index'
+import Starter from './tutorial/11-performance/starter/04-react-18'
 
 
 function App() {
