@@ -1,8 +1,11 @@
-import { startTransition, useState, useTransition } from 'react'
+import { startTransition, useState, useTransition, Suspense, lazy } from 'react'
+const SlowComponent = lazy(() => import('./SlowComponent')) // it will not render until we call something to display it
+
 const LatestReact = () => {
 	const [text, setText] = useState('')
 	const [items, setItems] = useState([])
 	const [isPending, startTransition] = useTransition()
+	const [show, setShow] = useState(false)
 
 	const handleChange = e => {
 		setText(e.target.value)
@@ -41,6 +44,15 @@ const LatestReact = () => {
 				>
 					{items}
 				</div>
+			)}
+			<button onClick={() => setShow(true)} type='button' className='btn'>
+				show
+			</button>
+			{/* while it be pending, 'loading...' displays */}
+			{show && (
+				<Suspense fallback={<h4>Loading...</h4>}>
+					<SlowComponent />
+				</Suspense>
 			)}
 		</section>
 	)
