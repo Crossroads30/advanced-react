@@ -21,6 +21,14 @@ const LatestReact = () => {
 			setItems(newItems)
 		})
 	}
+  //we can also wrap entire return in Suspense 
+  // return (
+	// 	<Suspense fallback={<h4>Loading...</h4>}>
+	// 		{/* rest of the logic */}
+	// 		<section>{show && <SlowComponent />}</section>
+	// 	</Suspense>
+	// )
+  
 	return (
 		<section>
 			<form className='form'>
