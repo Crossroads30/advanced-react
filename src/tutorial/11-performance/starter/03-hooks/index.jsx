@@ -1,15 +1,23 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { data } from '../../../../data'
 import List from './List'
 const LowerState = () => {
 	const [people, setPeople] = useState(data)
 	const [count, setCount] = useState(0)
 
-	const removePerson = id => {
-		const newPeople = people.filter(person => person.id !== id)
-		setPeople(newPeople)
-    // this function will be created from scratch & call rerender every time when it be invoke!!!!
-	}
+	// const removePerson = id => {
+	// 	const newPeople = people.filter(person => person.id !== id)
+	// 	setPeople(newPeople)
+  //   // without useCallback hook, this function will be created from scratch & call rerender every time when it be invoke!!!!
+	// }
+
+   const handleClick = useCallback(
+			id => {
+				const newPeople = people.filter(person => person.id !== id)
+				setPeople(newPeople)
+			},
+			[people]
+		)
 
 	return (
 		<section>
@@ -20,7 +28,11 @@ const LowerState = () => {
 			>
 				count {count}
 			</button>
-			<List people={people} removePerson={removePerson} />
+			<List
+				people={people}
+				// removePerson={removePerson}
+				handleClick={handleClick}
+			/>
 		</section>
 	)
 }

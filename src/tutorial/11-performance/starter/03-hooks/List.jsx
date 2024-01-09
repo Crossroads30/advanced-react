@@ -1,7 +1,7 @@
 import Item from './Person'
 import { memo, useMemo } from 'react'
 
-const List = ({ people, removePerson }) => {
+const List = ({ people, removePerson, handleClick }) => {
 	return (
 		<div>
 			{people.map(person => {
@@ -10,6 +10,7 @@ const List = ({ people, removePerson }) => {
 						key={person.id}
 						{...person}
 						removePerson={removePerson}
+						handleClick={handleClick}
 						id={person.id}
 					/>
 				)
